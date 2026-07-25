@@ -1,0 +1,4 @@
+SELECT CEIL(avg(e.salary) - avg(replace(salary,'0', ''))) from EMPLOYEES e;
+
+CEIL(number): rounds a number up to the nearest integer
+REPLACE (string, textWeWantToReplace, replacementText): replaces all the occurences of a substring with another substring
