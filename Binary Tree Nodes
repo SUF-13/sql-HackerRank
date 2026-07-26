@@ -1,0 +1,39 @@
+SELECT N,
+    CASE 
+        WHEN P IS NULL THEN 'Root'
+        WHEN N NOT IN (SELECT P FROM BST WHERE P IS NOT NULL) THEN 'Leaf'
+        ELSE 'Inner'
+    END
+FROM BST ORDER BY N;
+
+CASE is like an if-else, but for SQL
+There are 2 types of CASE:
+Searched CASE:
+Syntax:
+CASE
+  WHEN condition1 THEN result1
+  WHEN condition2 THEN result2
+  ...
+  ELSE default_result
+END
+Note: if ELSE not provided NULL is returned
+
+Simple CASE:
+Syntax:
+CASE expression
+  WHEN value1 THEN result1
+  WHEN value2 THEN result2
+  ...
+  ELSE default_result
+END
+
+e.g:
+SELECT
+    Name,
+    CASE Department
+        WHEN 'HR' THEN 'Human Resources'
+        WHEN 'IT' THEN 'Technology'
+        WHEN 'FIN' THEN 'Finance'
+        ELSE 'Other'
+    END
+FROM Employees;
