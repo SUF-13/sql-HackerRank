@@ -1,0 +1,14 @@
+SELECT latn FROM (SELECT round(LAT_N, 4) as latn,
+    ROW_NUMBER() over(order by LAT_N asc) as rn,
+    COUNT(*) over() as total
+FROM STATION) s where s.rn = (s.total+1)/2;
+
+
+ROW_NUMBER():
+assigns a unique sequential number to each row.
+
+OVER():
+tells the SQL which rows the window function should operate on and in what order.
+
+ROUND():
+rounds a number to a specified number of decimal places.
