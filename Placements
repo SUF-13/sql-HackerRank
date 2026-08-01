@@ -1,0 +1,4 @@
+SELECT s.name FROM Students s JOIN FRIENDS f on s.id = f.id WHERE
+    (SELECT salary FROM PACKAGES WHERE id = s.id) <
+    (SELECT salary FROM PACKAGES where id = f.friend_id)
+ ORDER BY (SELECT salary FROM PACKAGES where id = f.friend_id);
