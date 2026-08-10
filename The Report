@@ -1,0 +1,9 @@
+SELECT
+    CASE
+        WHEN sub.grade<8 THEN NULL
+        ELSE sub.name
+    END,
+    sub.grade,
+    sub.marks
+FROM 
+(select s.name, (select g.grade from Grades g where s.marks BETWEEN g.min_mark AND g.max_mark) as grade, s.marks from Students s) sub order by sub.grade desc, sub.name asc;
